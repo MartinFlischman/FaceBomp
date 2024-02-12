@@ -1,8 +1,8 @@
 // Selecting elements from the HTML
-const startButton = document.getElementById("startButton");
-const scoreDisplay = document.getElementById("score");
-const timeDisplay = document.getElementById("time");
-const messageDisplay = document.getElementById("message");
+const startButton = document.querySelector("#startButton");
+const scoreDisplay = document.querySelector("#score");
+const timeDisplay = document.querySelector("#timer");
+const messageDisplay = document.querySelector("#message");
 const holes = document.querySelectorAll(".hole");
 
 let score = 0;
@@ -40,6 +40,20 @@ function displayImage() {
     }, time);
 }
 
+// Function to start or stop the game
+function toggleGame() {
+    if (!isPlaying) {
+        startButton.textContent = "Playing...";
+        startGame();
+    } else {
+        startButton.textContent = "Start Game";
+        clearInterval(countdown);
+        isPlaying = false;
+        startButton.disabled = false;
+        messageDisplay.textContent = getMessage();
+    }
+}
+
 // Function to start the game
 function startGame() {
     score = 0;
@@ -71,18 +85,7 @@ function startGame() {
 }
 
 // Event listener for the start button
-startButton.addEventListener("click", function() {
-    if (!isPlaying) {
-        startButton.textContent = "Playing...";
-        startGame();
-    } else {
-        startButton.textContent = "Start Game";
-        clearInterval(countdown);
-        isPlaying = false;
-        startButton.disabled = false;
-        messageDisplay.textContent = getMessage();
-    }
-});
+startButton.addEventListener("click", toggleGame);
 
 // Event listener for clicking on images
 holes.forEach(hole => {
@@ -101,7 +104,7 @@ holes.forEach(hole => {
                 image.classList.remove("clicked");
             }, 300);
         }
-    });
+    }); 
 });
 
 // Function to get a fun message based on the score
