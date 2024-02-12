@@ -63,12 +63,12 @@ function startGame() {
 
     // Display the initial score and time
     scoreDisplay.textContent = `Score: ${score}`;
-    timeDisplay.textContent = `Time left: ${time} seconds`;
+    timeDisplay.textContent = `Time left: ${time}`;
 
     // Start the countdown timer
     countdown = setInterval(() => {
         time--;
-        timeDisplay.textContent = `Time left: ${time} seconds`;
+        timeDisplay.textContent = `Time left: ${time}`;
 
         // End the game when time is up
         if (time === 0) {
