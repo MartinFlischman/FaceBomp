@@ -62,6 +62,7 @@ function startGame() {
             isPlaying = false;
             startButton.disabled = false;
             messageDisplay.textContent = getMessage();
+            startButton.textContent = "Start Game";
         }
     }, 1000);
 
@@ -70,7 +71,18 @@ function startGame() {
 }
 
 // Event listener for the start button
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click", function() {
+    if (!isPlaying) {
+        startButton.textContent = "Playing...";
+        startGame();
+    } else {
+        startButton.textContent = "Start Game";
+        clearInterval(countdown);
+        isPlaying = false;
+        startButton.disabled = false;
+        messageDisplay.textContent = getMessage();
+    }
+});
 
 // Event listener for clicking on images
 holes.forEach(hole => {

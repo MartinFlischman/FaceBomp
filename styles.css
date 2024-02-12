@@ -8,7 +8,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    color: white;
+    color: #fff;
 }
 
 h1 {
@@ -19,7 +19,7 @@ h1 {
 button {
     background-color: #ff8c00;
     border: none;
-    color: white;
+    color: #fff;
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
@@ -74,7 +74,7 @@ button:hover {
 }
 
 .hole img.clicked {
-    border: 6px solid red;
+    border: 6px solid #fff;
     border-radius: 50%;
     box-sizing: border-box;
 }
