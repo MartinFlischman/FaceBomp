@@ -40,10 +40,6 @@ button:hover {
     margin: 10px 0 30px;
 }
 
-#message {
-    margin-bottom: 20px;
-}
-
 .game-board {
     display: grid;
     grid-template-columns: repeat(3, 150px);
