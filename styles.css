@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #4e8cff, #65c1ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: white;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #ff8c00;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ffaf5a;
+}
+
+#score {
+    font-size: 2rem;
+    margin: 30px 0;
+}
+
+#timer {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.hole {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ffaf5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hole img {
+    width: 55%;
+    height: 55%;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+    transform: scale(0); /* Set initial scale to make image invisible */
+}
+
+.hole.active img {
+    transform: scale(1.1);
+}
