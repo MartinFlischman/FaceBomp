@@ -57,7 +57,7 @@ button:hover {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .hole img {
@@ -66,8 +66,15 @@ button:hover {
     object-fit: cover;
     transition: transform 0.2s ease-in-out;
     transform: scale(0); /* Set initial scale to make image invisible */
+    cursor: pointer;
 }
 
 .hole.active img {
     transform: scale(1.1);
+}
+
+.hole img.clicked {
+    border: 6px solid red;
+    border-radius: 50%;
+    box-sizing: border-box;
 }
