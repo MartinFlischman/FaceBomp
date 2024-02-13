@@ -4,6 +4,11 @@ const scoreDisplay = document.getElementById("score");
 const timeDisplay = document.getElementById("timer");
 const holes = document.querySelectorAll(".hole");
 
+// Selecting the audio elements
+const bompSound = document.getElementById("bomp-sound");
+const endSound = document.getElementById("end-sound");
+const highSound = document.getElementById("high-sound");
+
 let score = 0;
 let time = 30;
 let isPlaying = false;
@@ -63,6 +68,10 @@ function startGame() {
             startButton.disabled = false;
             startButton.textContent = "Start Game";
             timeDisplay.textContent = getMessage();
+            if (score >= 20) {
+                displayConfetti();
+            }
+            score >= 20 ? highSound.play() : endSound.play();
         }
     }, 1000);
 
@@ -81,9 +90,12 @@ holes.forEach(hole => {
             score++;
             scoreDisplay.textContent = `Score: ${score}`;
             
-            // Add a red border to the clicked image
+            // Add a border to the clicked image
             const image = hole.querySelector("img");
             image.classList.add("clicked");
+            
+            // Play the "bomp.wav" sound
+            bompSound.play();
             
             // Remove the red border after a short delay
             setTimeout(() => {
@@ -104,4 +116,24 @@ function getMessage() {
     } else {
         return "Wow, you're a FaceBomp champion! 🏆";
     }
+}
+
+// Function to display rainbow-colored confetti
+function displayConfetti() {
+    // Configure confetti settings
+    const duration = 3 * 1000;
+    const confettiCount = 300;
+    const confettiColors = ['#00FF00', '#0000FF', '#00FFFF', '#4B0082', '#9400D3', '#FF69B4', '#FF0000', '#FF7F00', '#FFFF00', '#FFFFFF'];
+
+    // Launch confetti
+    confetti.create(null, {
+        resize: true,
+        useWorker: true
+    })({
+        particleCount: confettiCount,
+        spread: 160,
+        origin: { y: 0.6 },
+        colors: confettiColors,
+        duration: duration
+    });
 }
